@@ -1,31 +1,25 @@
-# Making vectors
+install.packages('iris')
+library(iris)
 
-# What could be an issue here?
-event_capacity <- c(60, 50, '100', 100)
+# Select all values of data frame for Sepal.length
+iris$Sepal.Length
+iris[, 'Sepal.Length']
 
-# Fix the possible error in a new variable event_capacity_new
-event_capacity_new <- c(60, 50, 100, 100)
+# Select only rows of Virginica flowers
+virginica <- iris[iris$Species == 'virginica', ]
 
-# Create a vector of event names for each event 
-event_names <- c("Social Night", "Donut Fundraiser", "Career Night", "DIY Food")
+# Select only the sepal length of the Virginica flowers
+virginica$Sepal.Length
 
-# Fix the error in creating this dataframe
-events <- data.frame(event_names, event_capacity)
+# Select rows of iris where Petal.Length > 4.0
+iris[iris$Petal.Length > 4, ]
 
-# Check the event_capacity column
+# Add a column to the dataframe indicating whether Petal.Length > 4.0
+iris$petal_length_greater <- iris$Petal.Length > 4.0
 
-events$event_capacity
+# Find the species type of the flower that has the longest Sepal length
+iris[iris$Sepal.Length == max(iris$Sepal.Length), ]$Species
 
-# Try with event_capacity_new column
-events <- data.frame(event_names, event_capacity_new)
-
-# Are there any differences between event_capacity and event_capacity)_new?
-# There are levels for the column
-
-# Add a column of event attendance
-events$event_attendance <- c(54, 43, 85, 90)
-
-# Add a column called seats_left in the events dataframe
-events$seats_left <- events$event_capacity_new - events$event_attendance
-
+# View rows where species type is 'setosa' and Sepal.Width > 3.0
+View(iris[((iris$Species == 'setosa') & (iris$Sepal.Width > 3.0)), ])
 
