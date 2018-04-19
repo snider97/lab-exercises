@@ -1,28 +1,32 @@
 # Exercise 7: DPLYR practice with NBA data
-# install.packages("dplyr")
+install.packages("dplyr")
 library(dplyr)
 
 # Read in the NBA team data of the 2016-2017 season from the data directory  
 # into a variable called `team.data` using `read.csv`
 
+setwd("~/info201/lab-exercises/week-4")
+team.data <- read.csv("./data/teams.csv")
 
 # The data.frame team.data should now be accessible to you. 
 # View it, and get some basic information about the number of rows/columns. 
 # Note the "X" preceding some of the column titles as well as the "*" 
 # following the names of teams that made it to the playoffs that year.
 
-
+View(team.data)
 
 # Add a column that gives the turnovers to steals ratio (TOV / STL) for each team
 
-
+team.data <- mutate(team.data, ts_ratio = TOV / STL)
 
 # Sort the teams from lowest turnover/steal ratio to highest
 
+team.data <- arrange(team.data, ts_ratio)
 
 # Get the team that had the highest Total Rebounds (TRB) only with the columns 
 # Team and TRB  *using one line of code*
 
+filter(select(team.data, Team, TRB), TRB == max()
 
 # Print only the name of the team that had the highest total rebounds
 # (that also happens to be the greatest team of all time)
